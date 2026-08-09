@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whiteout Survival | Minister Buff Registration</title>
+    <style>
+        :root {
+            --bg-color: #0b1120;
+            --container-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #0ea5e9;
+            --accent-hover: #0284c7;
+            --border: #334155;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-image: radial-gradient(circle at top, #1e293b 0%, #0b1120 70%);
+        }
+
+        .container {
+            background: var(--container-bg);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 450px;
+            border: 1px solid var(--border);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .header p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            background: #0f172a;
+            color: var(--text-main);
+            box-sizing: border-box;
+            font-size: 1rem;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.2);
+        }
+
+        button {
+            width: 100%;
+            padding: 0.85rem;
+            border: none;
+            border-radius: 6px;
+            background-color: var(--accent);
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            text-transform: uppercase;
+        }
+
+        button:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .success-msg {
+            display: none;
+            background: #064e3b;
+            color: #34d399;
+            padding: 1rem;
+            border-radius: 6px;
+            text-align: center;
+            margin-top: 1rem;
+            font-weight: bold;
+            border: 1px solid #047857;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>Minister Buff Queue</h1>
+            <p>Register to request a state title. Please be quick so others can use the buff!</p>
+        </div>
+
+        <form id="buffForm" action="https://formspree.io/f/xnpapaod" method="POST">
+            
+            <div class="form-group">
+                <label for="playerName">In-Game Name</label>
+                <input type="text" id="playerName" name="playerName" placeholder="e.g. FrostKing99" required>
+            </div>
+
+            <div class="form-group">
+                <label for="alliance">Alliance Tag</label>
+                <input type="text" id="alliance" name="alliance" placeholder="e.g. [SNO]" required>
+            </div>
+
+            <div class="form-group">
+                <label for="buffType">Requested Buff</label>
+                <select id="buffType" name="buffType" required>
+                    <option value="" disabled selected>Select a Minister Title...</option>
+                    <option value="Vice President">Vice President (Construction/Research Speed)</option>
+                    <option value="Minister of Education">Minister of Education (Troop Training)</option>
+                    <option value="Minister of Healing">Minister of Healing (Healing Speed)</option>
+                    <option value="Minister of Strategy">Minister of Strategy (Attack/Battle Stats)</option>
+                    <option value="Minister of Defense">Minister of Defense (Defense Stats)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="duration">Estimated Time Needed</label>
+                <select id="duration" name="duration" required>
+                    <option value="Just clicking (Under 2 mins)">Just clicking (Under 2 mins)</option>
+                    <option value="5 Minutes">5 Minutes</option>
+                    <option value="15 Minutes">15 Minutes</option>
+                    <option value="Event Duration (AC/SvS)">Event Duration</option>
+                </select>
+            </div>
+
+            <button type="submit">Join the Queue</button>
+        </form>
+
+        <div class="success-msg" id="successMsg">
+            Request submitted! Please wait for the Minister of Interior to assign your title.
+        </div>
+    </div>
+
+    <script>
+        // This script handles the form submission purely for visual feedback on your screen.
+        // If you hook this up to Formspree, you can remove this script block to let it redirect normally.
+        document.getElementById('buffForm').addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            
+            // Hide the form and show the success message
+            this.style.display = 'none';
+            document.getElementById('successMsg').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
