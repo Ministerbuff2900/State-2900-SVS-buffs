@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Whiteout Survival | Minister Buff Registration</title>
+    <title>State 2900 Minister Request</title>
     <style>
         :root {
             --bg-color: #0b1120;
@@ -13,9 +13,12 @@
             --accent: #0ea5e9;
             --accent-hover: #0284c7;
             --border: #334155;
+            /* Semi-transparent dark overlay to ensure text readability on the background image */
+            --background-overlay: rgba(11, 17, 32, 0.7); 
         }
 
         body {
+            /* Fallback color if the image doesn't load */
             background-color: var(--bg-color);
             color: var(--text-main);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -24,17 +27,27 @@
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            background-image: radial-gradient(circle at top, #1e293b 0%, #0b1120 70%);
+            padding: 1rem;
+            box-sizing: border-box;
+
+            /* Set the custom background image */
+            background-image: linear-gradient(var(--background-overlay), var(--background-overlay)), url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* Parallax effect: image stays still as the page scrolls */
         }
 
         .container {
             background: var(--container-bg);
             padding: 2.5rem;
             border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6); /* Enhanced shadow for depth against the background */
             width: 100%;
             max-width: 450px;
             border: 1px solid var(--border);
+            position: relative; /* Ensures form is always on top */
+            z-index: 10;
         }
 
         .header {
@@ -48,6 +61,7 @@
             color: var(--accent);
             text-transform: uppercase;
             letter-spacing: 1.5px;
+            font-weight: 800;
         }
 
         .header p {
@@ -121,8 +135,8 @@
 
     <div class="container">
         <div class="header">
-            <h1>Minister Buff Queue</h1>
-            <p>Register to request a state title. Please be quick so others can use the buff!</p>
+            <h1>STATE 2900 MINISTER REQUEST</h1>
+            <p>Register to request a state title for 30 minutes. Please respect the schedule!</p>
         </div>
 
         <form id="buffForm" action="https://formspree.io/f/xnpapaod" method="POST">
@@ -133,29 +147,77 @@
             </div>
 
             <div class="form-group">
-                <label for="alliance">Alliance Tag</label>
-                <input type="text" id="alliance" name="alliance" placeholder="e.g. [SNO]" required>
+                <label for="alliance">Alliance Name</label>
+                <input type="text" id="alliance" name="alliance" placeholder="e.g. Snowy Owls" required>
             </div>
 
             <div class="form-group">
                 <label for="buffType">Requested Buff</label>
                 <select id="buffType" name="buffType" required>
                     <option value="" disabled selected>Select a Minister Title...</option>
-                    <option value="Vice President">Vice President (Construction/Research Speed)</option>
-                    <option value="Minister of Education">Minister of Education (Troop Training)</option>
-                    <option value="Minister of Healing">Minister of Healing (Healing Speed)</option>
-                    <option value="Minister of Strategy">Minister of Strategy (Attack/Battle Stats)</option>
-                    <option value="Minister of Defense">Minister of Defense (Defense Stats)</option>
+                    <option value="Vice President (1st Day)">Vice President (1st Day)</option>
+                    <option value="Vice President (2nd Day)">Vice President (2nd Day)</option>
+                    <option value="Minister of Education (4th Day)">Minister of Education (4th Day)</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="duration">Estimated Time Needed</label>
-                <select id="duration" name="duration" required>
-                    <option value="Just clicking (Under 2 mins)">Just clicking (Under 2 mins)</option>
-                    <option value="5 Minutes">5 Minutes</option>
-                    <option value="15 Minutes">15 Minutes</option>
-                    <option value="Event Duration (AC/SvS)">Event Duration</option>
+                <label for="speedups">Days of Speed Ups Available</label>
+                <input type="number" id="speedups" name="speedups" placeholder="e.g. 15" min="0" required>
+            </div>
+
+            <div class="form-group">
+                <label for="requestedTime">Requested Time Slot (UTC)</label>
+                <select id="requestedTime" name="requestedTime" required>
+                    <option value="" disabled selected>Select a 30-min slot...</option>
+                    <option value="00:00 UTC">00:00 UTC</option>
+                    <option value="00:30 UTC">00:30 UTC</option>
+                    <option value="01:00 UTC">01:00 UTC</option>
+                    <option value="01:30 UTC">01:30 UTC</option>
+                    <option value="02:00 UTC">02:00 UTC</option>
+                    <option value="02:30 UTC">02:30 UTC</option>
+                    <option value="03:00 UTC">03:00 UTC</option>
+                    <option value="03:30 UTC">03:30 UTC</option>
+                    <option value="04:00 UTC">04:00 UTC</option>
+                    <option value="04:30 UTC">04:30 UTC</option>
+                    <option value="05:00 UTC">05:00 UTC</option>
+                    <option value="05:30 UTC">05:30 UTC</option>
+                    <option value="06:00 UTC">06:00 UTC</option>
+                    <option value="06:30 UTC">06:30 UTC</option>
+                    <option value="07:00 UTC">07:00 UTC</option>
+                    <option value="07:30 UTC">07:30 UTC</option>
+                    <option value="08:00 UTC">08:00 UTC</option>
+                    <option value="08:30 UTC">08:30 UTC</option>
+                    <option value="09:00 UTC">09:00 UTC</option>
+                    <option value="09:30 UTC">09:30 UTC</option>
+                    <option value="10:00 UTC">10:00 UTC</option>
+                    <option value="10:30 UTC">10:30 UTC</option>
+                    <option value="11:00 UTC">11:00 UTC</option>
+                    <option value="11:30 UTC">11:30 UTC</option>
+                    <option value="12:00 UTC">12:00 UTC</option>
+                    <option value="12:30 UTC">12:30 UTC</option>
+                    <option value="13:00 UTC">13:00 UTC</option>
+                    <option value="13:30 UTC">13:30 UTC</option>
+                    <option value="14:00 UTC">14:00 UTC</option>
+                    <option value="14:30 UTC">14:30 UTC</option>
+                    <option value="15:00 UTC">15:00 UTC</option>
+                    <option value="15:30 UTC">15:30 UTC</option>
+                    <option value="16:00 UTC">16:00 UTC</option>
+                    <option value="16:30 UTC">16:30 UTC</option>
+                    <option value="17:00 UTC">17:00 UTC</option>
+                    <option value="17:30 UTC">17:30 UTC</option>
+                    <option value="18:00 UTC">18:00 UTC</option>
+                    <option value="18:30 UTC">18:30 UTC</option>
+                    <option value="19:00 UTC">19:00 UTC</option>
+                    <option value="19:30 UTC">19:30 UTC</option>
+                    <option value="20:00 UTC">20:00 UTC</option>
+                    <option value="20:30 UTC">20:30 UTC</option>
+                    <option value="21:00 UTC">21:00 UTC</option>
+                    <option value="21:30 UTC">21:30 UTC</option>
+                    <option value="22:00 UTC">22:00 UTC</option>
+                    <option value="22:30 UTC">22:30 UTC</option>
+                    <option value="23:00 UTC">23:00 UTC</option>
+                    <option value="23:30 UTC">23:30 UTC</option>
                 </select>
             </div>
 
@@ -163,19 +225,20 @@
         </form>
 
         <div class="success-msg" id="successMsg">
-            Request submitted! Please wait for the Minister of Interior to assign your title.
+            Request submitted! Please check your time slot and wait for your turn.
         </div>
     </div>
 
     <script>
-        // This script handles the form submission purely for visual feedback on your screen.
-        // If you hook this up to Formspree, you can remove this script block to let it redirect normally.
         document.getElementById('buffForm').addEventListener('submit', function(e) {
             e.preventDefault(); 
             
-            // Hide the form and show the success message
             this.style.display = 'none';
             document.getElementById('successMsg').style.display = 'block';
+            
+            setTimeout(() => {
+                this.submit();
+            }, 1000);
         });
     </script>
 </body>
